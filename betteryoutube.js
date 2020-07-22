@@ -1,21 +1,3 @@
-// ==UserScript==
-// @name         better youtube
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        https://www.youtube.com/*
-// @grant        none
-// ==/UserScript==
-
-
-(function() {
-    'use strict';
-    console.log("beep");
-    fuck();
-    // Your code here...
-
-  
 
     export async function fuck()
     {
@@ -71,5 +53,5 @@
             }, 2000);
 
     }
-})();
+
 
