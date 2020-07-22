@@ -17,7 +17,7 @@
 
   
 
-    async function fuck()
+    export async function fuck()
     {
         console.log("beep1");
         setTimeout(() =>
