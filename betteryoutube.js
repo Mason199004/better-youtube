@@ -24,7 +24,12 @@
             console.log("beep2");
                 let fuckyoutube = document.getElementById("columns");
                 if (!fuckyoutube) return
-
+                let play = document.getElementById("player-container-outer");
+                if (play.offsetWidth / fuckyoutube.offsetWidth < 0.9)
+                {
+                    console.log('small');
+                    play.style.width = '60%';
+                }
                 fuckyoutube.style.width = '80%';
                 let secs2 = document.getElementsByTagName('ytd-watch-next-secondary-results-renderer')[0];
                 secs2.style.width = '100%';
@@ -63,7 +68,7 @@
 
 
                         }
-                        oldtot *= 1.02;
+                        oldtot *= 1.02
                         for (var ii = 0; ii < ll.length; ii++)
                         {
 
