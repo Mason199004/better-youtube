@@ -63,6 +63,7 @@
 
 
                         }
+                        oldtot *= 0.98;
                         for (var ii = 0; ii < ll.length; ii++)
                         {
 
