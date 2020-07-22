@@ -52,16 +52,26 @@
 
                         let ll = document.getElementsByClassName('ytp-chapter-hover-container')
                         var tot = document.getElementsByClassName('ytp-chrome-bottom')[0].offsetWidth
+                        var oldtot = 0;
+                        for (var i = 0; i < ll.length; i++)
+                        {
+
+                            let wid = ll[i].style.width;
+                            if (!wid.includes('px')) continue;
+                            wid = wid.substring(0, wid.length - 2);
+                            oldtot = oldtot + wid;
 
 
+                        }
                         for (var ii = 0; ii < ll.length; ii++)
                         {
 
                             let wid = ll[ii].style.width;
                             if (!wid.includes('px')) continue;
                             wid = wid.substring(0, wid.length - 2);
-                            console.log(wid);
-                            ll[ii].style.width = (wid / tot) * 100 + "%";
+
+                            
+                            ll[ii].style.width = (wid / oldtot) * 100 + "%";
                         }
                     }, 500);
 
