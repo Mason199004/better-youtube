@@ -1,0 +1,201 @@
+/* Make masthead less obnoxiously large */
+:root {
+    --ytd-masthead-height: 40px;
+}
+ytd-masthead {
+    border-bottom: 1px solid #ccc;
+    height: 40px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+ytd-masthead[dark] {
+    border-bottom: none;
+}
+ytd-masthead #container.ytd-masthead {
+    height: 40px;
+}
+/* Left-align the search bar */
+ytd-masthead #container.ytd-masthead #start.ytd-masthead {
+    width: calc(var(--ytd-app-drawer-width, 240px) - 16px);
+}
+ytd-masthead #container.ytd-masthead #center.ytd-masthead {
+    flex: 1;
+    align-items: flex-start;
+}
+ytd-masthead #container.ytd-masthead #center ytd-searchbox {
+    display: contents;
+}
+ytd-masthead #container.ytd-masthead #center ytd-searchbox #search-form.ytd-searchbox {
+    max-width: 700px;
+}
+
+/* Shrink the chip bar and remove the mobiliness from it
+ * Well, mostly. I couldn't do anything about the dumb
+ * "scroll bar" where you have to click the buttons to get
+ * it to scoll and the wheel doesn't work. */
+ytd-rich-grid-renderer #chips.ytd-rich-grid-renderer {
+    margin-bottom: 28px;
+}
+ytd-feed-filter-chip-bar-renderer {
+    height: 28px !important;
+    background: none;
+    border: none;
+}
+yt-chip-cloud-chip-renderer {
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
+    height: 100%;
+    border-radius: 2px;
+}
+/* Make it not sticky */
+ytd-feed-filter-chip-bar-renderer.ytd-rich-grid-renderer {
+    position: absolute;
+}
+
+/* add borders to the sidebars */
+app-drawer,
+ytd-mini-guide-renderer {
+    border-right: 1px solid #ccc;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+/* Fix the mini sidebar being on top of the header for some reason
+ * It only overlaps by 1px, but this causes it to cover the border */
+ytd-mini-guide-renderer {
+    z-index: 1900;
+}
+/* Make the sidebar items smaller */
+ytd-guide-section-renderer {
+    --paper-item-min-height: 32px;
+}
+/* Reduce the amount of whitespace above "Recommended" */
+ytd-rich-grid-renderer #grid-title.ytd-rich-grid-renderer {
+    margin-top: 8px;
+}
+/* Reduce the video tiles to a reasonable size, which in this case is 3/5ths of
+ * the original size. I tried 1/2, but it's just a little too small. */
+ytd-rich-item-renderer {
+    margin-left: calc(var(--ytd-rich-grid-item-margin) / 4);
+    margin-right: calc(var(--ytd-rich-grid-item-margin) / 4);
+    margin-bottom: 40px;
+    width: calc( 100% / (5*var(--ytd-rich-grid-items-per-row)/3) - (5*var(--ytd-rich-grid-item-margin)/3) - 0.01px);
+}
+/* Remove excess whitespace around misc section headers */
+ytd-rich-shelf-renderer #rich-shelf-header {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    font-size: 12px !important;
+}
+/* Decided to leave the posts at their original size */
+ytd-rich-item-renderer[is-post] {
+    width: calc( 100% / var(--ytd-rich-grid-posts-per-row) - (5*var(--ytd-rich-grid-item-margin)/3) - 0.01px);
+}
+/* Remove avatars from the video tiles. */
+#details.ytd-rich-grid-video-renderer a#avatar-link {
+    display: none;
+}
+/* Remove whitespace around video title in tiles */
+h3.ytd-rich-grid-video-renderer {
+    margin: 0;
+}
+/* Reduce font size of video title in tiles */
+#video-title.ytd-rich-grid-video-renderer {
+    font-size: 1.4rem;
+    font-weight: normal;
+}
+
+/* Add borders and drop shadows around the "Up next" box */
+ytd-watch-flexy:not([theater]):not([fullscreen]) #secondary.ytd-watch-flexy {
+    margin-top: var(--ytd-margin-6x);
+}
+ytd-watch-flexy[theater]:not([fullscreen]) #secondary.ytd-watch-flexy {
+    margin-top: 8px;
+}
+ytd-watch-flexy[flexy_] #secondary.ytd-watch-flexy {
+    margin-right: var(--ytd-margin-6x);
+    width: var(--ytd-watch-flexy-sidebar-width);
+    padding: 8px !important;
+    box-sizing: border-box;
+    min-width: var(--ytd-watch-flexy-sidebar-min-width);
+    border: 1px solid #1c1c1c;
+    background: #1c1c1c;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Try to add borders and drop shadows around the video description.
+ * In Polymer Youtube, the stuff we want to put a box around isn't
+ * in a box, so we need to carefully apply borders and box-shadows to
+ * each element, making shure that their edges are flush so it looks
+ * like a seamless border. clip-path is necessary to avoid creating a
+ * thin grey line along the seams, which would be caused by the shadows. */
+ytd-watch-flexy #columns #primary-inner > #info {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #393939 !important;
+}
+ytd-watch-flexy #columns #primary-inner {
+    /* In the default layout, there's a gap after the #info element.
+     * I can't figure out where it's coming from, so make the whole container
+     * a flexbox to nuke it from orbit. */
+    display: flex;
+    flex-direction: column;
+}
+ytd-watch-flexy #columns #primary-inner > #info,
+ytd-watch-flexy #columns #primary-inner > #meta,
+ytd-watch-flexy #columns #primary-inner > #ticket-shelf,
+ytd-watch-flexy #columns #primary-inner > #merch-shelf,
+ytd-comments {
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 1px solid #1c1c1c;
+    background: #1c1c1c;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    clip-path: inset(0px -5px 0px -5px);
+    border-bottom: none;
+    border-top: none;
+}
+ytd-comments {
+    border-bottom: 1px solid #575757 !important;
+}
+ytd-watch-flexy #columns #primary-inner > #info ytd-video-primary-info-renderer {
+    padding-top: 0;
+}
+
+/* Remove border and excess margin around avatars & icons in the sidebar */
+yt-img-shadow {
+    border-radius: 0 !important;
+}
+yt-img-shadow.ytd-guide-entry-renderer,
+.guide-icon.ytd-guide-entry-renderer {
+    margin-right: 12px;
+}
+
+/* Try to make the search results line up with the search bar */
+body > .gstl_50.sbdd_a {
+    top: 36px !important;
+    z-index: 31337;
+}
+
+/* Make likes/dislikes red & green, like God intended */
+#container.ytd-sentiment-bar-renderer {
+    background-color: var(--paper-red-500);
+}
+#like-bar.ytd-sentiment-bar-renderer {
+    background-color: var(--google-green-500);
+}
+/* Make it obvious the toggle button can be interacted with */
+paper-toggle-button {
+    cursor: pointer;
+}
+/* Remove the awful effect on the channel page header that makes it
+ * stutter in a highly distracting fashion when scrolling. */
+ytd-browse[page-subtype=channels] app-header {
+    transform: unset !important;
+    position: static !important;
+    margin-top: 0 !important;
+}
+ytd-browse[page-subtype=channels] #contentContainer.app-header-layout {
+    display: none;
+}
+
+ytd-browse[page-subtype=channels] app-header #background.app-header * {
+    transform: unset !important;
+}
