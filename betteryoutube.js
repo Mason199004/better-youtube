@@ -59,7 +59,7 @@
                             let wid = ll[i].style.width;
                             if (!wid.includes('px')) continue;
                             wid = wid.substring(0, wid.length - 2);
-                            oldtot = oldtot + wid;
+                            oldtot = oldtot + Math.floor(wid);
 
 
                         }
