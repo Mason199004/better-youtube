@@ -1,5 +1,22 @@
-// why aint this shit updating
-   async function fuck()
+// ==UserScript==
+// @name         better youtube
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://www.youtube.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+    console.log("beep");
+    fuck();
+    // Your code here...
+
+
+
+    async function fuck()
     {
         console.log("beep1");
         setTimeout(() =>
@@ -33,7 +50,7 @@
             setInterval(() =>
                     {
 
-                        let ll = document.getElementsByClassName('ytp-chapter-hover-container ytp-exp-chapter-hover-container')
+                        let ll = document.getElementsByClassName('ytp-chapter-hover-container')
                         var tot = document.getElementsByClassName('ytp-chrome-bottom')[0].offsetWidth
 
 
@@ -53,5 +70,5 @@
             }, 2000);
 
     }
-
+})();
 
