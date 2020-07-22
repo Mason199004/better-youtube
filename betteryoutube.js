@@ -1,5 +1,5 @@
 
-    export async function fuck()
+   async function fuck()
     {
         console.log("beep1");
         setTimeout(() =>
