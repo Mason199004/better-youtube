@@ -25,7 +25,7 @@
                 let fuckyoutube = document.getElementById("columns");
                 if (!fuckyoutube) return
                 let play = document.getElementById("player-container-outer");
-                if (play.offsetWidth / fuckyoutube.offsetWidth < 0.92)
+                if (play.offsetWidth / fuckyoutube.offsetWidth < 0.7)
                 {
                     console.log('small');
                     play.style.width = '60%';
